@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="900"
+     height="470"
+     viewBox="60 280 900 470"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">We&#8217;re getting married</title>
+  <desc id="desc">Hand-drawn pastel lettering writes We&#8217;re getting married from left to right.</desc>
+
+  <defs>
+    <!-- Rough edges and broken pigment imitate a soft pastel pencil. -->
+    <filter id="pastel" x="-8%" y="-12%" width="116%" height="124%">
+      <feTurbulence type="fractalNoise"
+                    baseFrequency="0.42"
+                    numOctaves="3"
+                    seed="23"
+                    result="grain"/>
+      <feTurbulence type="fractalNoise"
+                    baseFrequency="0.018"
+                    numOctaves="2"
+                    seed="9"
+                    result="wobble"/>
+      <feDisplacementMap in="SourceGraphic"
+                         in2="wobble"
+                         scale="1.7"
+                         xChannelSelector="R"
+                         yChannelSelector="G"
+                         result="rough"/>
+      <feComposite in="grain"
+                   in2="rough"
+                   operator="in"
+                   result="chalkGrain"/>
+      <feComponentTransfer in="rough" result="softBase">
+        <feFuncA type="linear" slope="0.72"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="softBase"/>
+        <feMergeNode in="chalkGrain"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      .ink {
+        fill: none;
+        stroke: #fffdf8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: draw var(--duration) cubic-bezier(.4,0,.18,1) forwards;
+        animation-delay: var(--delay);
+      }
+      @keyframes draw { to { stroke-dashoffset: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        .ink { animation: none; stroke-dashoffset: 0; }
+      }
+    </style>
+  </defs>
+
+  <!-- Every letter below is a hand-shaped Bézier path; there is no font. -->
+  <g filter="url(#pastel)">
+    <!-- We’re -->
+    <path class="ink" pathLength="1" stroke-width="8.2"
+          style="--delay:.09s;--duration:.64s"
+          d="M88 326 C81 366 76 444 88 465
+             C96 480 107 466 118 436
+             C134 391 146 342 160 314
+             C168 298 173 303 171 326
+             C166 371 166 446 178 467
+             C186 480 198 462 210 430
+             C226 387 238 342 253 311"/>
+    <path class="ink" pathLength="1" stroke-width="6.4"
+          style="--delay:.46s;--duration:.29s"
+          d="M244 430 C257 414 283 413 287 426
+             C291 439 270 449 254 444
+             C241 440 244 424 255 418
+             C271 410 285 423 292 437
+             C300 452 313 452 325 437"/>
+    <path class="ink" pathLength="1" stroke-width="6"
+          style="--delay:.62s;--duration:.27s"
+          d="M322 449 C329 432 332 414 337 413
+             C343 412 339 431 342 432
+             C347 433 352 412 363 412
+             C372 412 372 421 366 429
+             C362 435 368 447 380 448"/>
+    <path class="ink" pathLength="1" stroke-width="6.2"
+          style="--delay:.76s;--duration:.28s"
+          d="M379 430 C391 414 416 413 420 426
+             C424 438 403 449 388 444
+             C376 440 379 425 390 419
+             C405 411 418 423 425 437
+             C432 451 444 451 454 438"/>
+    <path class="ink" pathLength="1" stroke-width="6.5"
+          style="--delay:.82s;--duration:.12s"
+          d="M320 378 C324 369 325 361 323 354"/>
+
+    <!-- getting -->
+    <g transform="translate(55 0)">
+    <path class="ink" pathLength="1" stroke-width="6.8"
+          style="--delay:.91s;--duration:.37s"
+          d="M491 421 C477 412 463 426 466 440
+             C469 454 484 451 492 436
+             C499 423 503 412 504 414
+             C503 439 499 475 491 491
+             C482 509 465 511 460 499
+             C456 488 470 480 488 483
+             C507 487 518 475 526 459"/>
+    <path class="ink" pathLength="1" stroke-width="6.1"
+          style="--delay:1.12s;--duration:.26s"
+          d="M522 431 C535 414 560 414 564 427
+             C568 439 547 450 532 444
+             C520 440 523 425 534 419
+             C550 411 562 424 569 438
+             C576 451 587 450 596 437"/>
+    <path class="ink" pathLength="1" stroke-width="6.3"
+          style="--delay:1.25s;--duration:.26s"
+          d="M607 382 C604 401 600 423 597 439
+             C594 453 603 455 616 439
+             M590 411 C603 409 616 409 626 407"/>
+    <path class="ink" pathLength="1" stroke-width="6.2"
+          style="--delay:1.39s;--duration:.26s"
+          d="M644 378 C640 400 636 423 633 439
+             C630 453 640 455 653 439
+             M626 409 C639 408 652 407 663 404"/>
+    <path class="ink" pathLength="1" stroke-width="5.8"
+          style="--delay:1.53s;--duration:.17s"
+          d="M677 416 C675 426 670 445 677 449
+             C685 453 694 442 700 432"/>
+    <path class="ink" pathLength="1" stroke-width="7"
+          style="--delay:1.61s;--duration:.09s"
+          d="M685 389 L686 388"/>
+    <path class="ink" pathLength="1" stroke-width="6.1"
+          style="--delay:1.65s;--duration:.29s"
+          d="M702 448 C706 431 710 414 715 414
+             C722 414 716 444 723 447
+             C732 451 741 414 755 414
+             C768 414 758 443 767 447
+             C776 451 786 440 793 429"/>
+    <path class="ink" pathLength="1" stroke-width="6.8"
+          style="--delay:1.81s;--duration:.41s"
+          d="M814 421 C800 412 786 427 789 441
+             C792 454 807 451 815 436
+             C822 423 826 412 827 415
+             C826 442 821 478 813 493
+             C803 510 785 511 781 499
+             C778 488 792 481 809 484
+             C830 488 844 473 854 457"/>
+    </g>
+
+    <!-- married -->
+    <path class="ink" pathLength="1" stroke-width="7"
+          style="--delay:2.10s;--duration:.43s"
+          d="M255 699 C261 678 265 648 271 648
+             C278 648 270 692 279 696
+             C289 700 296 651 307 649
+             C317 647 307 692 317 696
+             C328 700 334 652 347 650
+             C360 648 348 691 361 695
+             C371 698 379 685 386 672"/>
+
+    <!-- a: compact, round and deliberately without a flying tail -->
+    <path class="ink" pathLength="1" stroke-width="6.7"
+          style="--delay:2.33s;--duration:.30s"
+          d="M414 659
+             C399 653 386 666 387 680
+             C388 693 400 699 410 690
+             C419 682 421 664 415 658
+             C410 654 404 655 400 659
+             C394 665 396 678 403 682
+             C411 687 419 679 423 669
+             C420 681 418 693 426 696
+             C435 699 444 686 450 674"/>
+
+    <path class="ink" pathLength="1" stroke-width="6"
+          style="--delay:2.50s;--duration:.23s"
+          d="M448 696 C455 679 458 660 463 659
+             C469 658 465 678 468 679
+             C473 680 478 659 489 659
+             C498 659 498 668 492 676
+             C488 682 494 694 505 695"/>
+    <path class="ink" pathLength="1" stroke-width="5.9"
+          style="--delay:2.61s;--duration:.23s"
+          d="M503 695 C510 678 513 659 518 658
+             C524 657 520 677 523 678
+             C528 679 533 658 544 658
+             C553 658 553 667 547 675
+             C543 681 549 693 560 694"/>
+    <path class="ink" pathLength="1" stroke-width="5.8"
+          style="--delay:2.74s;--duration:.16s"
+          d="M564 661 C562 672 557 691 564 695
+             C572 699 581 688 587 678"/>
+    <path class="ink" pathLength="1" stroke-width="7"
+          style="--delay:2.82s;--duration:.09s"
+          d="M572 634 L573 633"/>
+    <path class="ink" pathLength="1" stroke-width="6.2"
+          style="--delay:2.86s;--duration:.27s"
+          d="M587 679 C599 662 624 662 628 675
+             C632 687 611 698 596 692
+             C584 688 587 673 598 667
+             C614 659 626 672 633 686
+             C640 699 652 698 661 685"/>
+    <path class="ink" pathLength="1" stroke-width="6.8"
+          style="--delay:3.00s;--duration:.46s"
+          d="M688 660 C674 653 661 667 663 681
+             C665 695 679 696 688 681
+             C699 661 704 624 711 590
+             C716 565 724 548 730 551
+             C737 555 730 585 723 612
+             C715 645 707 680 707 692
+             C707 701 716 699 727 686
+             C739 672 744 660 748 657
+             C745 671 738 689 748 695
+             C760 702 776 686 786 674"/>
+
+    <!-- A few faint parallel deposits make the pigment less digitally perfect. -->
+    <path class="ink" pathLength="1" stroke-width="2.2" opacity=".48"
+          style="--delay:.29s;--duration:.27s"
+          d="M94 341 C89 379 86 426 91 454"/>
+    <path class="ink" pathLength="1" stroke-width="2" opacity=".42"
+          style="--delay:2.20s;--duration:.20s"
+          d="M262 662 C260 675 259 687 262 693"/>
+    <path class="ink" pathLength="1" stroke-width="2.1" opacity=".44"
+          style="--delay:3.09s;--duration:.20s"
+          d="M716 579 C712 607 705 641 698 670"/>
+  </g>
+</svg>
