@@ -391,27 +391,6 @@
         });
     }
 
-    function initRoughMapCleanup() {
-        const roughMap = document.querySelector(".root_daum_roughmap");
-
-        if (!roughMap || !("MutationObserver" in window)) {
-            return;
-        }
-
-        const removeDetails = () => {
-            roughMap
-                .querySelectorAll(".wrap_controllers")
-                .forEach((details) => details.remove());
-        };
-        const observer = new MutationObserver(removeDetails);
-
-        observer.observe(roughMap, {
-            childList: true,
-            subtree: true
-        });
-        removeDetails();
-    }
-
     function initBackToTop() {
         const button = document.querySelector("[data-back-to-top]");
         const lastSection = document.querySelector(".map-section");
@@ -566,7 +545,6 @@
     initParallax();
     initCarousels();
     initAccountModal();
-    initRoughMapCleanup();
     initBackToTop();
     initBgm();
 })();

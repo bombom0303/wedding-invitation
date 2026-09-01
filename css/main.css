@@ -6,8 +6,9 @@
     align-items: flex-start;
     justify-content: center;
 
-    min-height: 100vh;
-    min-height: 100svh;
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
     overflow: hidden;
 
     color: #fffdf8;
@@ -207,6 +208,7 @@
     height: clamp(290px, 53svh, 465px);
     margin: 0 0 clamp(54px, 8svh, 82px);
     overflow: hidden;
+    contain: paint;
 
     background: #3d413a;
 }
@@ -779,6 +781,7 @@ body.has-account-modal {
     width: min(100%, 620px);
     margin-inline: auto;
     overflow: hidden;
+    contain: paint;
 
     background: #f4f3ee;
 
@@ -791,7 +794,6 @@ body.has-account-modal {
     display: flex;
 
     transition: transform 0.55s cubic-bezier(.32, .72, 0, 1);
-    will-change: transform;
 }
 
 .gallery-slide {
@@ -999,11 +1001,13 @@ body.has-account-modal {
     width: 100% !important;
     max-width: none !important;
     border-bottom: 1px solid var(--color-border);
+    contain: paint;
 }
 
 .root_daum_roughmap .wrap_map {
     width: 100% !important;
     height: clamp(280px, 78vw, 420px) !important;
+    touch-action: pan-y;
 }
 
 .root_daum_roughmap .wrap_controllers {
@@ -1249,8 +1253,8 @@ body.has-account-modal {
 
 /* 전체 섹션의 글꼴, 색상, 위아래 흐름을 하나의 규칙으로 맞춘다. */
 .main-hero {
-    min-height: 100vh;
-    min-height: 100svh;
+    height: 100%;
+    min-height: 0;
     margin-top: 0;
     padding-top: max(42px, env(safe-area-inset-top));
     padding-bottom: max(42px, env(safe-area-inset-bottom));
@@ -1643,6 +1647,10 @@ body.has-account-modal .floating-control {
         background: rgba(255, 255, 255, 0.9);
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
+    }
+
+    .root_daum_roughmap .wrap_map {
+        pointer-events: none;
     }
 }
 
