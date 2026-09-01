@@ -99,6 +99,7 @@
 
         const reducedMotion = window.matchMedia(REDUCED_MOTION_QUERY);
         let animationFrame = null;
+        let isActive = false;
 
         const update = () => {
             animationFrame = null;
@@ -124,25 +125,53 @@
         };
 
         const requestUpdate = () => {
-            if (animationFrame !== null) {
+            if (!isActive || animationFrame !== null) {
                 return;
             }
 
             animationFrame = window.requestAnimationFrame(update);
         };
 
-        document.addEventListener("scroll", requestUpdate, {
-            passive: true,
-            capture: true
-        });
+        const setActive = (active) => {
+            isActive = active;
+            banner.classList.toggle(
+                "is-parallax-active",
+                active && !reducedMotion.matches
+            );
+
+            if (!active && animationFrame !== null) {
+                window.cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+            }
+
+            if (active) {
+                requestUpdate();
+            }
+        };
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                ([entry]) => setActive(entry.isIntersecting),
+                { rootMargin: "30% 0px" }
+            );
+
+            observer.observe(banner);
+        } else {
+            setActive(true);
+        }
+
         window.addEventListener("scroll", requestUpdate, {
             passive: true
         });
         window.addEventListener("resize", requestUpdate);
         window.visualViewport?.addEventListener("resize", requestUpdate);
-        reducedMotion.addEventListener?.("change", requestUpdate);
-
-        requestUpdate();
+        reducedMotion.addEventListener?.("change", () => {
+            banner.classList.toggle(
+                "is-parallax-active",
+                isActive && !reducedMotion.matches
+            );
+            requestUpdate();
+        });
     }
 
     function initCarousel(carousel) {
@@ -432,6 +461,8 @@
         const toggle = document.querySelector("[data-bgm-toggle]");
         const icon = toggle?.querySelector(".bi");
         const intro = document.getElementById("weddingIntro");
+        let isStarting = false;
+        let userPaused = false;
 
         if (!audio || !toggle || !icon) {
             return;
@@ -467,11 +498,51 @@
         audio.volume = 0.45;
         syncButton();
 
+        const removeUnlockListeners = () => {
+            document.removeEventListener("pointerdown", unlockPlayback, true);
+            document.removeEventListener("keydown", unlockPlayback, true);
+        };
+
+        const attemptAutoplay = async () => {
+            if (userPaused || isStarting || !audio.paused) {
+                return;
+            }
+
+            isStarting = true;
+
+            try {
+                await audio.play();
+            } catch {
+                syncButton();
+            } finally {
+                isStarting = false;
+            }
+        };
+
+        function unlockPlayback(event) {
+            if (
+                event.target instanceof Element &&
+                event.target.closest("[data-bgm-toggle]")
+            ) {
+                return;
+            }
+
+            void attemptAutoplay();
+        }
+
+        document.addEventListener("pointerdown", unlockPlayback, true);
+        document.addEventListener("keydown", unlockPlayback, true);
+        void attemptAutoplay();
+
         toggle.addEventListener("click", async () => {
             if (!audio.paused) {
+                userPaused = true;
+                removeUnlockListeners();
                 audio.pause();
                 return;
             }
+
+            userPaused = false;
 
             try {
                 await audio.play();
@@ -484,7 +555,10 @@
             }
         });
 
-        audio.addEventListener("play", syncButton);
+        audio.addEventListener("play", () => {
+            removeUnlockListeners();
+            syncButton();
+        });
         audio.addEventListener("pause", syncButton);
     }
 

@@ -8,7 +8,6 @@
 
     min-height: 100vh;
     min-height: 100svh;
-    min-height: 100dvh;
     overflow: hidden;
 
     color: #fffdf8;
@@ -225,11 +224,13 @@
 
     object-fit: cover;
     object-position: center 54%;
-    filter: grayscale(1) contrast(0.92);
     transform:
         translate3d(-50%,
             calc(-50% + var(--parallax-y, 80px)),
             0) scale(1.02);
+}
+
+.save-date-banner.is-parallax-active .parallax-image {
     will-change: transform;
 }
 
@@ -1250,7 +1251,6 @@ body.has-account-modal {
 .main-hero {
     min-height: 100vh;
     min-height: 100svh;
-    min-height: 100dvh;
     margin-top: 0;
     padding-top: max(42px, env(safe-area-inset-top));
     padding-bottom: max(42px, env(safe-area-inset-bottom));
@@ -1637,6 +1637,12 @@ body.has-account-modal .floating-control {
     .bgm-toggle {
         top: max(6px, env(safe-area-inset-top));
         right: max(6px, env(safe-area-inset-right));
+    }
+
+    .floating-control::before {
+        background: rgba(255, 255, 255, 0.9);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
     }
 }
 
