@@ -304,90 +304,81 @@
         }
     }
 
-    function initAccountModal() {
-        const modal = document.getElementById("accountModal");
-        const title = document.getElementById("accountModalTitle");
-        const bank = document.getElementById("accountModalBank");
-        const number = document.getElementById("accountModalNumber");
-        const owner = document.getElementById("accountModalOwner");
-        const copyButton = modal?.querySelector("[data-copy-account]");
-        const closeButton = modal?.querySelector("[data-account-close]");
+    function initAccountCopy() {
+        const buttons = document.querySelectorAll("[data-copy-account]");
 
-        if (
-            !modal ||
-            !title ||
-            !bank ||
-            !number ||
-            !owner ||
-            !copyButton
-        ) {
+        if (buttons.length === 0) {
             return;
         }
 
-        let opener = null;
-        let copyResetTimer = null;
+        const resetTimers = new WeakMap();
 
-        const close = () => {
-            if (typeof modal.close === "function") {
-                modal.close();
-            } else {
-                modal.removeAttribute("open");
-                document.body.classList.remove("has-account-modal");
-                opener?.focus();
-            }
-        };
+        buttons.forEach((button) => {
+            const label = button.querySelector("span");
+            const icon = button.querySelector("i");
+            const originalLabel = label?.textContent ?? "복사";
 
-        document.querySelectorAll("[data-account-open]").forEach((button) => {
-            button.addEventListener("click", () => {
-                const accountOwner = button.dataset.accountOwner || "";
-                const accountBank = button.dataset.accountBank || "";
-                const accountNumber = button.dataset.accountNumber || "";
+            button.addEventListener("click", async (event) => {
+                event.preventDefault();
 
-                opener = button;
-                title.textContent = `${accountOwner} 계좌번호`;
-                bank.textContent = accountBank;
-                number.textContent = accountNumber;
-                owner.textContent = `예금주 ${accountOwner}`;
-                copyButton.dataset.copyAccount = accountNumber;
-                copyButton.textContent = "계좌번호 복사";
-                copyButton.classList.remove("is-copied");
-                document.body.classList.add("has-account-modal");
+                const accountNumber = button.dataset.copyAccount;
 
-                if (typeof modal.showModal === "function") {
-                    modal.showModal();
-                } else {
-                    modal.setAttribute("open", "");
+                if (!accountNumber) {
+                    return;
                 }
+
+                await copyText(accountNumber.replace(/[^0-9]/g, ""));
+
+                window.clearTimeout(resetTimers.get(button));
+                button.classList.add("is-copied");
+
+                if (label) {
+                    label.textContent = "복사됨";
+                }
+
+                if (icon) {
+                    icon.classList.remove("bi-clipboard");
+                    icon.classList.add("bi-check2");
+                }
+
+                resetTimers.set(
+                    button,
+                    window.setTimeout(() => {
+                        button.classList.remove("is-copied");
+
+                        if (label) {
+                            label.textContent = originalLabel;
+                        }
+
+                        if (icon) {
+                            icon.classList.remove("bi-check2");
+                            icon.classList.add("bi-clipboard");
+                        }
+                    }, 1600)
+                );
             });
         });
+    }
 
-        closeButton?.addEventListener("click", close);
-        modal.addEventListener("click", (event) => {
-            if (event.target === modal) {
-                close();
-            }
-        });
-        modal.addEventListener("close", () => {
-            document.body.classList.remove("has-account-modal");
-            opener?.focus();
-        });
+    function initAccountAccordion() {
+        const panels = document.querySelectorAll(".account-panel");
 
-        copyButton.addEventListener("click", async () => {
-            const accountNumber = copyButton.dataset.copyAccount;
+        if (panels.length === 0) {
+            return;
+        }
 
-            if (!accountNumber) {
-                return;
-            }
+        panels.forEach((panel) => {
+            panel.addEventListener("toggle", () => {
+                if (!panel.open) {
+                    return;
+                }
 
-            await copyText(accountNumber);
-
-            window.clearTimeout(copyResetTimer);
-            copyButton.textContent = "복사되었습니다";
-            copyButton.classList.add("is-copied");
-            copyResetTimer = window.setTimeout(() => {
-                copyButton.textContent = "계좌번호 복사";
-                copyButton.classList.remove("is-copied");
-            }, 1600);
+                panels.forEach((other) => {
+                    if (other !== panel) {
+                        other.open = false;
+                    }
+                });
+            });
         });
     }
 
@@ -544,7 +535,8 @@
     initLetteringReplay();
     initParallax();
     initCarousels();
-    initAccountModal();
+    initAccountCopy();
+    initAccountAccordion();
     initBackToTop();
     initBgm();
 })();

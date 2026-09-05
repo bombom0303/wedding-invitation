@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/common.css?v=3">
     <link rel="stylesheet" href="./css/intro.css?v=2">
-    <link rel="stylesheet" href="./css/main.css?v=45">
+    <link rel="stylesheet" href="./css/main.css?v=56">
 </head>
 
 <body>
@@ -242,36 +242,178 @@
 
             <section class="account-section" aria-labelledby="accountHeading">
                 <p class="section-eyebrow">ACCOUNT</p>
-                <h2 class="account-heading" id="accountHeading">신랑 &amp; 신부에게 마음 전하기</h2>
+                <h2 class="account-heading" id="accountHeading">마음 전하실 곳</h2>
 
-                <div class="account-grid">
-                    <button type="button" class="account-trigger" data-account-open data-account-owner="조남혁"
-                        data-account-bank="신한은행" data-account-number="110-417-947608">
-                        <strong>신랑 측 계좌번호</strong>
-                    </button>
+                <div class="account-accordion">
+                    <details class="account-panel account-panel-groom">
+                        <summary class="account-panel-summary">
+                            <span class="account-panel-heading">
+                                <span class="account-panel-eyebrow">GROOM · 신랑</span>
+                                <span class="account-panel-side">마음 전하실 곳</span>
+                            </span>
+                            <span class="account-panel-toggle" aria-hidden="true"></span>
+                        </summary>
 
-                    <button type="button" class="account-trigger" data-account-open data-account-owner="길새봄"
-                        data-account-bank="기업은행" data-account-number="485-04-938401-018">
-                        <strong>신부 측 계좌번호</strong>
-                    </button>
+                        <ul class="account-panel-list">
+                            <li class="account-item">
+                                <div class="account-item-info">
+                                    <span class="account-item-role">
+                                        <span class="account-item-relation">신랑</span>
+                                        조남혁
+                                    </span>
+                                    <span class="account-item-bank">신한은행 110-417-947608</span>
+                                </div>
+                                <div class="account-item-actions">
+                                    <button type="button" class="account-copy" data-copy-account="110-417-947608"
+                                        aria-label="조남혁 계좌번호 복사">
+                                        <i class="bi bi-clipboard" aria-hidden="true"></i>
+                                        <span>복사</span>
+                                    </button>
+                                    <a class="account-toss" href="supertoss://send?bank=신한&accountNo=110417947608&amount=&msg="
+                                        aria-label="조남혁에게 토스로 송금">
+                                        <span class="account-toss-mark" aria-hidden="true">
+                                            <img src="./img/toss.webp" alt="">
+                                        </span>
+                                        <span>송금</span>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="account-item">
+                                <div class="account-item-info">
+                                    <span class="account-item-role">
+                                        <span class="account-item-relation">아버지</span>
+                                        조평구
+                                    </span>
+                                    <span class="account-item-bank">국민은행 235-01-0239-579</span>
+                                </div>
+                                <div class="account-item-actions">
+                                    <button type="button" class="account-copy" data-copy-account="235-01-0239-579"
+                                        aria-label="조평구 계좌번호 복사">
+                                        <i class="bi bi-clipboard" aria-hidden="true"></i>
+                                        <span>복사</span>
+                                    </button>
+                                    <a class="account-toss" href="supertoss://send?bank=국민&accountNo=235010239579&amount=&msg="
+                                        aria-label="조평구에게 토스로 송금">
+                                        <span class="account-toss-mark" aria-hidden="true">
+                                            <img src="./img/toss.webp" alt="">
+                                        </span>
+                                        <span>송금</span>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="account-item">
+                                <div class="account-item-info">
+                                    <span class="account-item-role">
+                                        <span class="account-item-relation">어머니</span>
+                                        연정은
+                                    </span>
+                                    <span class="account-item-bank">기업은행 071-090206-01-019</span>
+                                </div>
+                                <div class="account-item-actions">
+                                    <button type="button" class="account-copy" data-copy-account="071-090206-01-019"
+                                        aria-label="연정은 계좌번호 복사">
+                                        <i class="bi bi-clipboard" aria-hidden="true"></i>
+                                        <span>복사</span>
+                                    </button>
+                                    <a class="account-toss" href="supertoss://send?bank=기업&accountNo=07109020601019&amount=&msg="
+                                        aria-label="연정은에게 토스로 송금">
+                                        <span class="account-toss-mark" aria-hidden="true">
+                                            <img src="./img/toss.webp" alt="">
+                                        </span>
+                                        <span>송금</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </details>
+
+                    <details class="account-panel account-panel-bride">
+                        <summary class="account-panel-summary">
+                            <span class="account-panel-heading">
+                                <span class="account-panel-eyebrow">BRIDE · 신부</span>
+                                <span class="account-panel-side">마음 전하실 곳</span>
+                            </span>
+                            <span class="account-panel-toggle" aria-hidden="true"></span>
+                        </summary>
+
+                        <ul class="account-panel-list">
+                            <li class="account-item">
+                                <div class="account-item-info">
+                                    <span class="account-item-role">
+                                        <span class="account-item-relation">신부</span>
+                                        길새봄
+                                    </span>
+                                    <span class="account-item-bank">기업은행 485-04-938401-018</span>
+                                </div>
+                                <div class="account-item-actions">
+                                    <button type="button" class="account-copy" data-copy-account="485-04-938401-018"
+                                        aria-label="길새봄 계좌번호 복사">
+                                        <i class="bi bi-clipboard" aria-hidden="true"></i>
+                                        <span>복사</span>
+                                    </button>
+                                    <a class="account-toss" href="supertoss://send?bank=기업&accountNo=48504938401018&amount=&msg="
+                                        aria-label="길새봄에게 토스로 송금">
+                                        <span class="account-toss-mark" aria-hidden="true">
+                                            <img src="./img/toss.webp" alt="">
+                                        </span>
+                                        <span>송금</span>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="account-item">
+                                <div class="account-item-info">
+                                    <span class="account-item-role">
+                                        <span class="account-item-relation">아버지</span>
+                                        길원덕
+                                    </span>
+                                    <span class="account-item-bank">농협 351-1248-9330-83</span>
+                                </div>
+                                <div class="account-item-actions">
+                                    <button type="button" class="account-copy" data-copy-account="351-1248-9330-83"
+                                        aria-label="길원덕 계좌번호 복사">
+                                        <i class="bi bi-clipboard" aria-hidden="true"></i>
+                                        <span>복사</span>
+                                    </button>
+                                    <a class="account-toss" href="supertoss://send?bank=농협&accountNo=3511248933083&amount=&msg="
+                                        aria-label="길원덕에게 토스로 송금">
+                                        <span class="account-toss-mark" aria-hidden="true">
+                                            <img src="./img/toss.webp" alt="">
+                                        </span>
+                                        <span>송금</span>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="account-item">
+                                <div class="account-item-info">
+                                    <span class="account-item-role">
+                                        <span class="account-item-relation">어머니</span>
+                                        김옥선
+                                    </span>
+                                    <span class="account-item-bank">농협 352-1725-2785-23</span>
+                                </div>
+                                <div class="account-item-actions">
+                                    <button type="button" class="account-copy" data-copy-account="352-1725-2785-23"
+                                        aria-label="김옥선 계좌번호 복사">
+                                        <i class="bi bi-clipboard" aria-hidden="true"></i>
+                                        <span>복사</span>
+                                    </button>
+                                    <a class="account-toss" href="supertoss://send?bank=농협&accountNo=3521725278523&amount=&msg="
+                                        aria-label="김옥선에게 토스로 송금">
+                                        <span class="account-toss-mark" aria-hidden="true">
+                                            <img src="./img/toss.webp" alt="">
+                                        </span>
+                                        <span>송금</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </details>
                 </div>
             </section>
-
-            <dialog class="account-modal" id="accountModal" aria-labelledby="accountModalTitle">
-                <button type="button" class="account-modal-close" data-account-close aria-label="계좌 팝업 닫기">×</button>
-
-                <h2 id="accountModalTitle">계좌번호</h2>
-
-                <div class="account-modal-detail">
-                    <p id="accountModalBank"></p>
-                    <strong id="accountModalNumber"></strong>
-                    <p id="accountModalOwner"></p>
-                </div>
-
-                <button type="button" class="copy-button" data-copy-account="" aria-live="polite">
-                    계좌번호 복사
-                </button>
-            </dialog>
 
             <section class="map-section" aria-labelledby="locationHeading">
                 <p class="location-kicker">LOCATION</p>
@@ -354,7 +496,7 @@
         </button>
     </div>
 
-    <script src="./js/main.js?v=26"></script>
+    <script src="./js/main.js?v=27"></script>
     <script src="./js/intro.js?v=5"></script>
 </body>
 
