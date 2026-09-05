@@ -1800,7 +1800,7 @@ body.has-account-modal .floating-control {
 
 .account-panel-list {
     margin: 0;
-    padding: 4px 22px 22px;
+    padding: 4px 22px 10px;
 
     list-style: none;
 }
